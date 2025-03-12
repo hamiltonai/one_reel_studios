@@ -339,18 +339,41 @@ const PortfolioPage = () => {
                     >
                       <Box sx={{ position: 'relative' }}>
                         {project.isDirectVideo ? (
-                          <Box
-                            component="video"
-                            src={project.videoUrl}
-                            autoPlay
-                            muted
-                            loop
-                            sx={{
-                              width: '100%',
-                              height: '240px',
-                              objectFit: 'cover'
-                            }}
-                          />
+                          <>
+                            <Box
+                              component="video"
+                              src={project.videoUrl}
+                              autoPlay={!isMobile}
+                              muted
+                              loop
+                              playsInline
+                              poster={project.image}
+                              sx={{
+                                width: '100%',
+                                height: '240px',
+                                objectFit: 'cover'
+                              }}
+                            />
+                            {isMobile && (
+                              <Box 
+                                sx={{ 
+                                  position: 'absolute', 
+                                  top: '50%', 
+                                  left: '50%', 
+                                  transform: 'translate(-50%, -50%)',
+                                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                  borderRadius: '50%',
+                                  width: 60,
+                                  height: 60,
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center'
+                                }}
+                              >
+                                <PlayArrowIcon sx={{ color: 'white', fontSize: 40 }} />
+                              </Box>
+                            )}
+                          </>
                         ) : (
                           <CardMedia
                             component="img"
@@ -358,25 +381,6 @@ const PortfolioPage = () => {
                             image={project.image}
                             alt={project.title}
                           />
-                        )}
-                        {project.videoUrl && !project.isDirectVideo && (
-                          <Box 
-                            sx={{ 
-                              position: 'absolute', 
-                              top: '50%', 
-                              left: '50%', 
-                              transform: 'translate(-50%, -50%)',
-                              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                              borderRadius: '50%',
-                              width: 60,
-                              height: 60,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}
-                          >
-                            <PlayArrowIcon sx={{ color: 'white', fontSize: 40 }} />
-                          </Box>
                         )}
                       </Box>
                       <CardContent sx={{ flexGrow: 1 }}>
@@ -460,8 +464,10 @@ const PortfolioPage = () => {
                     component="video"
                     src={selectedProject.videoUrl}
                     controls
-                    autoPlay
+                    autoPlay={!isMobile}
                     muted
+                    playsInline
+                    poster={selectedProject.image}
                     sx={{
                       position: 'absolute',
                       top: 0,
