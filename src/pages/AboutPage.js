@@ -20,7 +20,7 @@ import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 
 // Import background video
-import backgroundVideo from '../assets/videos/background_video.mp4';
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Icons
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';

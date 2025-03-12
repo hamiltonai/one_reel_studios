@@ -25,7 +25,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 // Import background video
-import backgroundVideo from '../assets/videos/background_video.mp4';
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Animation variants
 const fadeIn = {

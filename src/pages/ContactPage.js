@@ -19,7 +19,7 @@ import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 
 // Import background video
-import backgroundVideo from '../assets/videos/background_video.mp4';
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Icons
 import EmailIcon from '@mui/icons-material/Email';
