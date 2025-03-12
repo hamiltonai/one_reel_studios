@@ -62,7 +62,7 @@ const MainLayout = ({ children }) => {
   const drawer = (
     <Box sx={{ width: 250, pt: 2 }} role="presentation">
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pb: 2 }}>
-        <Box component="img" src={logoImage} alt="One Reel Studios" sx={{ height: 40 }} />
+        <Box component="img" src={logoImage} alt="One Reel Studios" sx={{ height: 80 }} />
         <IconButton onClick={handleDrawerToggle}>
           <CloseIcon />
         </IconButton>
@@ -114,7 +114,7 @@ const MainLayout = ({ children }) => {
                   color: 'inherit'
                 }}
               >
-                <Box component="img" src={logoImage} alt="One Reel Studios" sx={{ height: 40 }} />
+                <Box component="img" src={logoImage} alt="One Reel Studios" sx={{ height: 80 }} />
               </Box>
 
               {/* Desktop Navigation */}
@@ -248,7 +248,7 @@ const MainLayout = ({ children }) => {
                 +1 (555) 123-4567
               </Typography>
               <Typography variant="body2" color="white" sx={{ mt: 1 }}>
-                123 Film Street, Hollywood, CA 90028
+                456 Media Avenue, Houston, TX 77002
               </Typography>
             </Box>
           </Box>
