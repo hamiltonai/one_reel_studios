@@ -18,15 +18,15 @@ import {
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 
-// Import background video
-const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
-
 // Icons
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MovieIcon from '@mui/icons-material/Movie';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import EditIcon from '@mui/icons-material/Edit';
+
+// Import background video
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Animation variants
 const fadeIn = {

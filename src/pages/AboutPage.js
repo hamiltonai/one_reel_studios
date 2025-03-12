@@ -19,9 +19,6 @@ import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 
-// Import background video
-const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
-
 // Icons
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MovieIcon from '@mui/icons-material/Movie';
@@ -31,6 +28,9 @@ import StarIcon from '@mui/icons-material/Star';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+
+// Import background video
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Animation variants
 const fadeIn = {

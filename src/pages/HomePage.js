@@ -18,14 +18,14 @@ import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 
-// Import background video
-const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
-
 // Icons
 import MovieIcon from '@mui/icons-material/Movie';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import EditIcon from '@mui/icons-material/Edit';
+
+// Import background video
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Animation variants
 const fadeIn = {
@@ -84,18 +84,21 @@ const HomePage = () => {
     {
       title: 'Corporate Brand Video',
       image: 'https://source.unsplash.com/random/600x400/?corporate',
+      video: 'http://d2jy5h4r3efipz.cloudfront.net/drone1.mp4',
       description: 'A brand video for a Fortune 500 company showcasing their values and mission.',
       link: '/portfolio/corporate-brand'
     },
     {
       title: 'Real Estate Drone Tour',
       image: 'https://source.unsplash.com/random/600x400/?realestate',
+      video: 'http://d2jy5h4r3efipz.cloudfront.net/real_estate.mp4',
       description: 'Aerial footage of luxury properties for a high-end real estate agency.',
       link: '/portfolio/real-estate-drone'
     },
     {
       title: 'Product Photography',
       image: 'https://source.unsplash.com/random/600x400/?product',
+      video: 'http://d2jy5h4r3efipz.cloudfront.net/wedding.mp4',
       description: 'Professional product photography for an e-commerce website.',
       link: '/portfolio/product-photography'
     }
@@ -242,83 +245,6 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      {/* Services Section */}
-      <Box sx={{ py: 10, backgroundColor: 'background.default' }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
-            <Typography 
-              variant="h2" 
-              component="h2" 
-              gutterBottom
-              sx={{ fontWeight: 700 }}
-            >
-              Our Services
-            </Typography>
-            <Typography 
-              variant="h6" 
-              component="p" 
-              color="text.secondary"
-              sx={{ 
-                maxWidth: '700px',
-                mx: 'auto'
-              }}
-            >
-              We offer a wide range of video production and photography services to meet your creative needs.
-            </Typography>
-          </Box>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}
-          >
-            <Grid container spacing={4}>
-              {services.map((service, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <motion.div variants={fadeIn}>
-                    <Card 
-                      sx={{ 
-                        height: '100%', 
-                        display: 'flex', 
-                        flexDirection: 'column',
-                        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                        '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0 12px 20px rgba(0,0,0,0.1)'
-                        }
-                      }}
-                    >
-                      <CardContent sx={{ flexGrow: 1, textAlign: 'center', pt: 4 }}>
-                        <Box sx={{ mb: 2 }}>
-                          {service.icon}
-                        </Box>
-                        <Typography gutterBottom variant="h5" component="h3" sx={{ fontWeight: 600 }}>
-                          {service.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {service.description}
-                        </Typography>
-                      </CardContent>
-                      <CardActions sx={{ justifyContent: 'center', pb: 3 }}>
-                        <Button 
-                          size="small" 
-                          component={RouterLink} 
-                          to={service.link}
-                          color="primary"
-                        >
-                          Learn More
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </motion.div>
-        </Container>
-      </Box>
-
       {/* Portfolio Section */}
       <Box sx={{ py: 10, backgroundColor: 'background.paper' }}>
         <Container maxWidth="lg">
@@ -366,12 +292,29 @@ const HomePage = () => {
                         }
                       }}
                     >
-                      <CardMedia
-                        component="img"
-                        height="240"
-                        image={item.image}
-                        alt={item.title}
-                      />
+                      {item.video ? (
+                        <Box sx={{ position: 'relative', height: 240 }}>
+                          <Box
+                            component="video"
+                            src={item.video}
+                            autoPlay
+                            muted
+                            loop
+                            sx={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover'
+                            }}
+                          />
+                        </Box>
+                      ) : (
+                        <CardMedia
+                          component="img"
+                          height="240"
+                          image={item.image}
+                          alt={item.title}
+                        />
+                      )}
                       <CardContent sx={{ flexGrow: 1 }}>
                         <Typography gutterBottom variant="h5" component="h3" sx={{ fontWeight: 600 }}>
                           {item.title}
@@ -412,8 +355,85 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      {/* Testimonials Section */}
+      {/* Services Section */}
       <Box sx={{ py: 10, backgroundColor: 'background.default' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Typography 
+              variant="h2" 
+              component="h2" 
+              gutterBottom
+              sx={{ fontWeight: 700 }}
+            >
+              Our Services
+            </Typography>
+            <Typography 
+              variant="h6" 
+              component="p" 
+              color="text.secondary"
+              sx={{ 
+                maxWidth: '700px',
+                mx: 'auto'
+              }}
+            >
+              We offer a wide range of video production and photography services to meet your creative needs.
+            </Typography>
+          </Box>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            <Grid container spacing={4} justifyContent="center">
+              {services.map((service, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <motion.div variants={fadeIn}>
+                    <Card 
+                      sx={{ 
+                        height: '100%', 
+                        display: 'flex', 
+                        flexDirection: 'column',
+                        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                        '&:hover': {
+                          transform: 'translateY(-8px)',
+                          boxShadow: '0 12px 20px rgba(0,0,0,0.1)'
+                        }
+                      }}
+                    >
+                      <CardContent sx={{ flexGrow: 1, textAlign: 'center', pt: 4 }}>
+                        <Box sx={{ mb: 2 }}>
+                          {service.icon}
+                        </Box>
+                        <Typography gutterBottom variant="h5" component="h3" sx={{ fontWeight: 600 }}>
+                          {service.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {service.description}
+                        </Typography>
+                      </CardContent>
+                      <CardActions sx={{ justifyContent: 'center', pb: 3 }}>
+                        <Button 
+                          size="small" 
+                          component={RouterLink} 
+                          to={service.link}
+                          color="primary"
+                        >
+                          Learn More
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Testimonials Section */}
+      <Box sx={{ py: 10, backgroundColor: 'background.paper' }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', mb: 8 }}>
             <Typography 

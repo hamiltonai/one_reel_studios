@@ -18,15 +18,15 @@ import {
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 
-// Import background video
-const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
-
 // Icons
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
+
+// Import background video
+const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Animation variants
 const fadeIn = {
@@ -436,8 +436,8 @@ const ContactPage = () => {
                         </Typography>
                       </Box>
                       <Typography variant="body1" sx={{ ml: 5 }}>
-                        123 Film Street<br />
-                        Hollywood, CA 90028<br />
+                        456 Media Avenue<br />
+                        Houston, TX 77002<br />
                         United States
                       </Typography>
                     </Box>
@@ -463,7 +463,7 @@ const ContactPage = () => {
       {/* Google Map */}
       <Box sx={{ height: '500px', width: '100%' }}>
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26430.393553120906!2d-118.33842150284417!3d34.09811712519001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf07045279bf%3A0xf67a9a6797bdfae4!2sHollywood%2C%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sca!4v1647887977452!5m2!1sen!2sca" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d221925.5392281988!2d-95.73095806897561!3d29.78499217862969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C%20TX%2C%20USA!5e0!3m2!1sen!2sus!4v1647887977452!5m2!1sen!2sus" 
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 

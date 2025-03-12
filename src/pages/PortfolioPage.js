@@ -69,7 +69,8 @@ const PortfolioPage = () => {
       description: 'A brand video for a Fortune 500 company showcasing their values and mission.',
       client: 'Global Tech Inc.',
       date: 'January 2023',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      videoUrl: 'http://d2jy5h4r3efipz.cloudfront.net/drone1.mp4',
+      isDirectVideo: true
     },
     {
       id: 2,
@@ -80,7 +81,8 @@ const PortfolioPage = () => {
       description: 'Aerial footage of luxury properties for a high-end real estate agency.',
       client: 'Luxury Homes Realty',
       date: 'March 2023',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      videoUrl: 'http://d2jy5h4r3efipz.cloudfront.net/real_estate.mp4',
+      isDirectVideo: true
     },
     {
       id: 3,
@@ -91,6 +93,8 @@ const PortfolioPage = () => {
       description: 'Professional product photography for an e-commerce website.',
       client: 'Fashion Forward',
       date: 'April 2023',
+      videoUrl: 'http://d2jy5h4r3efipz.cloudfront.net/wedding.mp4',
+      isDirectVideo: true,
       gallery: [
         'https://source.unsplash.com/random/800x600/?product1',
         'https://source.unsplash.com/random/800x600/?product2',
@@ -107,7 +111,8 @@ const PortfolioPage = () => {
       description: 'Cinematic wedding video capturing the special moments of the couple\'s big day.',
       client: 'Johnson & Smith Wedding',
       date: 'June 2023',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      videoUrl: 'http://d2jy5h4r3efipz.cloudfront.net/wedding.mp4',
+      isDirectVideo: true
     },
     {
       id: 5,
@@ -333,13 +338,28 @@ const PortfolioPage = () => {
                       onClick={() => handleProjectClick(project)}
                     >
                       <Box sx={{ position: 'relative' }}>
-                        <CardMedia
-                          component="img"
-                          height="240"
-                          image={project.image}
-                          alt={project.title}
-                        />
-                        {project.videoUrl && (
+                        {project.isDirectVideo ? (
+                          <Box
+                            component="video"
+                            src={project.videoUrl}
+                            autoPlay
+                            muted
+                            loop
+                            sx={{
+                              width: '100%',
+                              height: '240px',
+                              objectFit: 'cover'
+                            }}
+                          />
+                        ) : (
+                          <CardMedia
+                            component="img"
+                            height="240"
+                            image={project.image}
+                            alt={project.title}
+                          />
+                        )}
+                        {project.videoUrl && !project.isDirectVideo && (
                           <Box 
                             sx={{ 
                               position: 'absolute', 
@@ -435,19 +455,37 @@ const PortfolioPage = () => {
 
             {selectedProject.videoUrl ? (
               <Box sx={{ position: 'relative', paddingTop: '56.25%', mb: 4 }}>
-                <iframe
-                  src={selectedProject.videoUrl}
-                  title={selectedProject.title}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: 0
-                  }}
-                  allowFullScreen
-                />
+                {selectedProject.isDirectVideo ? (
+                  <Box
+                    component="video"
+                    src={selectedProject.videoUrl}
+                    controls
+                    autoPlay
+                    muted
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                ) : (
+                  <iframe
+                    src={selectedProject.videoUrl}
+                    title={selectedProject.title}
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      border: 0
+                    }}
+                    allowFullScreen
+                  />
+                )}
               </Box>
             ) : selectedProject.gallery ? (
               <Box sx={{ mb: 4 }}>
