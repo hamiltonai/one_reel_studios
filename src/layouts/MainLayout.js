@@ -213,7 +213,16 @@ const MainLayout = ({ children }) => {
             }}
           >
             <Box sx={{ mb: { xs: 4, md: 0 }, textAlign: { xs: 'center', md: 'left' } }}>
-              <Box component="img" src={logoImage} alt="One Reel Studios" sx={{ height: 50, mb: 2 }} />
+              <Box 
+                component="img" 
+                src={logoImage} 
+                alt="One Reel Studios" 
+                sx={{ 
+                  height: 50, 
+                  mb: 2,
+                  borderRadius: 2,
+                }} 
+              />
               <Typography variant="body2" color="white" sx={{ maxWidth: 300 }}>
                 Professional video production and photography services for businesses and individuals.
               </Typography>

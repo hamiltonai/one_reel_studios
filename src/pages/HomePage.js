@@ -24,8 +24,15 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import EditIcon from '@mui/icons-material/Edit';
 
-// Import background video
-const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
+// Import videos and posters
+import backgroundVideo from '../assets/images/background_video_hq.mp4';
+import backgroundPoster from '../assets/images/background_video_poster.jpg';
+import drone1Video from '../assets/images/drone1_hq.mp4';
+import drone1Poster from '../assets/images/drone1_poster.jpg';
+import realEstateVideo from '../assets/images/real_estate_hq.mp4';
+import realEstatePoster from '../assets/images/real_estate_poster.jpg';
+import weddingVideo from '../assets/images/wedding_hq.mp4';
+import weddingPoster from '../assets/images/wedding_poster.jpg';
 
 // Animation variants
 const fadeIn = {
@@ -84,21 +91,24 @@ const HomePage = () => {
     {
       title: 'Corporate Brand Video',
       image: 'https://source.unsplash.com/random/600x400/?corporate',
-      video: 'http://d2jy5h4r3efipz.cloudfront.net/drone1.mp4',
+      video: drone1Video,
+      poster: drone1Poster,
       description: 'A brand video for a Fortune 500 company showcasing their values and mission.',
       link: '/portfolio/corporate-brand'
     },
     {
       title: 'Real Estate Drone Tour',
       image: 'https://source.unsplash.com/random/600x400/?realestate',
-      video: 'http://d2jy5h4r3efipz.cloudfront.net/real_estate.mp4',
+      video: realEstateVideo,
+      poster: realEstatePoster,
       description: 'Aerial footage of luxury properties for a high-end real estate agency.',
       link: '/portfolio/real-estate-drone'
     },
     {
       title: 'Product Photography',
       image: 'https://source.unsplash.com/random/600x400/?product',
-      video: 'http://d2jy5h4r3efipz.cloudfront.net/wedding.mp4',
+      video: weddingVideo,
+      poster: weddingPoster,
       description: 'Professional product photography for an e-commerce website.',
       link: '/portfolio/product-photography'
     }
@@ -144,24 +154,6 @@ const HomePage = () => {
           justifyContent: 'center'
         }}
       >
-        {/* Video Background */}
-        <Box
-          component="video"
-          src={backgroundVideo}
-          autoPlay
-          muted
-          loop
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: -1
-          }}
-        />
-        
         {/* Dark Overlay */}
         <Box
           sx={{
@@ -172,6 +164,26 @@ const HomePage = () => {
             height: '100%',
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
             zIndex: -1
+          }}
+        />
+        
+        {/* Video Background */}
+        <Box
+          component="video"
+          src={backgroundVideo}
+          poster={backgroundPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -2
           }}
         />
         
@@ -297,9 +309,11 @@ const HomePage = () => {
                           <Box
                             component="video"
                             src={item.video}
+                            poster={item.poster}
                             autoPlay
                             muted
                             loop
+                            playsInline
                             sx={{
                               width: '100%',
                               height: '100%',
