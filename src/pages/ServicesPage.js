@@ -25,7 +25,11 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import EditIcon from '@mui/icons-material/Edit';
 
-// Import background video
+// Import background video and images
+import videoProductionImage from '../assets/images/video_production_man1.jpg';
+import dronePropertyImage from '../assets/images/drone_property1.jpg';
+import photographyImage from '../assets/images/photography_man1.jpg';
+import postProductionImage from '../assets/images/post_production1.jpg';
 const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
 // Animation variants
@@ -56,7 +60,7 @@ const ServicesPage = () => {
       title: 'Video Production',
       description: 'Professional video production services for commercials, corporate videos, and social media content.',
       icon: <MovieIcon fontSize="large" color="primary" />,
-      image: 'https://source.unsplash.com/random/800x600/?videoproduction',
+      image: videoProductionImage,
       longDescription: 'Our video production services cover everything from concept development to final delivery. We work closely with you to understand your vision and bring it to life with high-quality video content that engages your audience and achieves your goals.',
       features: [
         'Full-service video production from concept to completion',
@@ -72,7 +76,7 @@ const ServicesPage = () => {
       title: 'Drone Photography & Videography',
       description: 'Stunning aerial photography and videography to showcase your property, event, or location from a unique perspective.',
       icon: <VideoCameraBackIcon fontSize="large" color="primary" />,
-      image: 'https://source.unsplash.com/random/800x600/?dronephotography',
+      image: dronePropertyImage,
       longDescription: 'Our FAA-certified drone pilots capture breathtaking aerial footage that provides a unique perspective of your property, event, or location. Drone photography and videography adds a dynamic element to your visual content that traditional ground-based photography cannot achieve.',
       features: [
         'FAA-certified and insured drone pilots',
@@ -89,7 +93,7 @@ const ServicesPage = () => {
       title: 'Photography',
       description: 'High-quality photography services for products, events, portraits, and more.',
       icon: <CameraAltIcon fontSize="large" color="primary" />,
-      image: 'https://source.unsplash.com/random/800x600/?photography',
+      image: photographyImage,
       longDescription: 'Our professional photographers capture stunning images that tell your story and showcase your products, people, or events in the best possible light. We use professional-grade equipment and techniques to deliver exceptional results.',
       features: [
         'Product photography with professional lighting',
@@ -106,7 +110,7 @@ const ServicesPage = () => {
       title: 'Post-Production',
       description: 'Professional editing, color grading, and visual effects to enhance your video and photo content.',
       icon: <EditIcon fontSize="large" color="primary" />,
-      image: 'https://source.unsplash.com/random/800x600/?videoediting',
+      image: postProductionImage,
       longDescription: 'Our post-production services transform raw footage into polished, professional content. Our experienced editors use industry-standard software to edit, color grade, and add visual effects to your video content, ensuring it looks and sounds its best.',
       features: [
         'Professional video editing',
