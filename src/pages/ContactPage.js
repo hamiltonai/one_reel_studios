@@ -412,7 +412,7 @@ const ContactPage = () => {
                         </Typography>
                       </Box>
                       <Typography variant="body1" sx={{ ml: 5 }}>
-                        info@onereelstudios.com
+                        sales@1ReelStudios.com
                       </Typography>
                     </Box>
                     
@@ -424,7 +424,7 @@ const ContactPage = () => {
                         </Typography>
                       </Box>
                       <Typography variant="body1" sx={{ ml: 5 }}>
-                        +1 (555) 123-4567
+                        832-997-5436
                       </Typography>
                     </Box>
                     

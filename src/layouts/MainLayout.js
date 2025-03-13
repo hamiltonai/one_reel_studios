@@ -251,10 +251,10 @@ const MainLayout = ({ children }) => {
                 Contact Us
               </Typography>
               <Typography variant="body2" color="white">
-                info@onereelstudios.com
+                sales@1ReelStudios.com
               </Typography>
               <Typography variant="body2" color="white">
-                +1 (555) 123-4567
+                832-997-5436
               </Typography>
               <Typography variant="body2" color="white" sx={{ mt: 1 }}>
                 456 Media Avenue, Houston, TX 77002
