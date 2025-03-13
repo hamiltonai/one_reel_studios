@@ -436,8 +436,7 @@ const ContactPage = () => {
                         </Typography>
                       </Box>
                       <Typography variant="body1" sx={{ ml: 5 }}>
-                        456 Media Avenue<br />
-                        Houston, TX 77002<br />
+                        Houston, TX<br />
                         United States
                       </Typography>
                     </Box>

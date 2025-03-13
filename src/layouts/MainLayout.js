@@ -257,7 +257,7 @@ const MainLayout = ({ children }) => {
                 832-997-5436
               </Typography>
               <Typography variant="body2" color="white" sx={{ mt: 1 }}>
-                456 Media Avenue, Houston, TX 77002
+                Houston, TX
               </Typography>
             </Box>
           </Box>
