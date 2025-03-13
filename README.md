@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# One Reel Studios Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the official website for One Reel Studios, a professional video production and photography service.
 
-## Available Scripts
+## Contact Form Email Setup
 
-In the project directory, you can run:
+The contact form is configured to send emails to sales@1ReelStudios.com using EmailJS. To set up the email functionality, follow these steps:
 
-### `npm start`
+1. **Create an EmailJS Account**:
+   - Go to [EmailJS](https://www.emailjs.com/) and create an account
+   - The free tier allows 200 emails per month
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Create an Email Service**:
+   - In your EmailJS dashboard, go to "Email Services"
+   - Click "Add New Service"
+   - Choose your email provider (Gmail, Outlook, etc.)
+   - Follow the instructions to connect your email account
+   - Note the Service ID for later use
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Create an Email Template**:
+   - In your EmailJS dashboard, go to "Email Templates"
+   - Click "Create New Template"
+   - Design your email template using the variables below
+   - Note the Template ID for later use
 
-### `npm test`
+4. **Template Variables**:
+   The contact form sends the following variables to your email template:
+   - `{{from_name}}` - The name of the person submitting the form
+   - `{{from_email}}` - The email address of the person submitting the form
+   - `{{from_phone}}` - The phone number of the person submitting the form
+   - `{{service}}` - The service they're interested in
+   - `{{message}}` - The message they've written
+   - `{{to_email}}` - The destination email (sales@1ReelStudios.com)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Update the Configuration**:
+   - Open `/src/pages/ContactPage.js`
+   - Find the EmailJS configuration section at the top of the file
+   - Replace the placeholder values with your actual EmailJS credentials:
+     ```javascript
+     const EMAILJS_SERVICE_ID = "service_eh4zsjw"; // Your EmailJS service ID
+     const EMAILJS_TEMPLATE_ID = "template_a0gag2v"; // Your EmailJS template ID
+     const EMAILJS_PUBLIC_KEY = "sf8I2u7LCqvizaWmk"; // Your EmailJS public key
+     ```
+   - To find your public key:
+     - Log in to your EmailJS account
+     - Go to "Account" > "API Keys"
+     - Copy your "Public Key"
 
-### `npm run build`
+6. **Test the Form**:
+   - Run the website locally
+   - Fill out the contact form and submit
+   - Check that you receive the email at sales@1ReelStudios.com
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### Running Locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Building for Production
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deployment
 
-## Learn More
+The website is deployed to [GitHub Pages/Netlify/Vercel/etc.].
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies Used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- Material UI
+- Framer Motion
+- EmailJS
+- React Router

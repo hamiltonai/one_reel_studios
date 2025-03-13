@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Box, 
   Container, 
@@ -13,10 +13,12 @@ import {
   Card,
   CardContent,
   Divider,
-  useMediaQuery
+  useMediaQuery,
+  CircularProgress
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 // Icons
 import EmailIcon from '@mui/icons-material/Email';
@@ -27,6 +29,11 @@ import SendIcon from '@mui/icons-material/Send';
 
 // Import background video
 const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
+
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = "service_eh4zsjw"; // Your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = "template_a0gag2v"; // Your EmailJS template ID
+const EMAILJS_PUBLIC_KEY = "sf8I2u7LCqvizaWmk"; // Replace with your actual EmailJS public key
 
 // Animation variants
 const fadeIn = {
@@ -52,6 +59,11 @@ const ContactPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
+  
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -70,6 +82,9 @@ const ContactPage = () => {
     severity: 'success',
     message: ''
   });
+
+  // Loading state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Service options
   const serviceOptions = [
@@ -137,24 +152,56 @@ const ContactPage = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      // In a real application, you would send the form data to your backend here
-      console.log('Form submitted:', formData);
-      
-      // Show success message
-      setSnackbar({
-        open: true,
-        severity: 'success',
-        message: 'Thank you for your message! We will get back to you soon.'
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
+      setIsSubmitting(true);
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_phone: formData.phone || 'Not provided',
+        service: formData.service ? serviceOptions.find(option => option.value === formData.service)?.label : 'Not selected',
+        message: formData.message,
+        to_email: 'sales@1ReelStudios.com'
+      };
+
+      // Send email using EmailJS
+      emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+      )
+        .then((response) => {
+          console.log('Email sent successfully:', response);
+          
+          // Show success message
+          setSnackbar({
+            open: true,
+            severity: 'success',
+            message: 'Thank you for your message! We will get back to you soon.'
+          });
+          
+          // Reset form
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            service: '',
+            message: ''
+          });
+        })
+        .catch((error) => {
+          console.error('Email sending failed:', error);
+          
+          // Show error message
+          setSnackbar({
+            open: true,
+            severity: 'error',
+            message: 'Failed to send your message. Please try again later or contact us directly.'
+          });
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     } else {
       // Show error message
       setSnackbar({
@@ -361,13 +408,18 @@ const ContactPage = () => {
                           variant="contained"
                           color="primary"
                           size="large"
+                          disabled={isSubmitting}
                           sx={{ 
                             mt: 2,
                             px: 4,
                             py: 1.5
                           }}
                         >
-                          Send Message
+                          {isSubmitting ? (
+                            <CircularProgress size={24} color="inherit" />
+                          ) : (
+                            'Send Message'
+                          )}
                         </Button>
                       </Grid>
                     </Grid>
