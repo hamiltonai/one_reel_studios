@@ -239,9 +239,11 @@ const ContactPage = () => {
         <Box
           component="video"
           src={backgroundVideo}
-          autoPlay
+          autoPlay={!isMobile}
           muted
           loop
+          playsInline
+          poster="https://d2jy5h4r3efipz.cloudfront.net/background_video_poster.jpg"
           sx={{
             position: 'absolute',
             top: 0,

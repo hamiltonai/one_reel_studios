@@ -13,8 +13,10 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  Paper
+  Paper,
+  useMediaQuery
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -53,6 +55,9 @@ const staggerContainer = {
 };
 
 const ServicesPage = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  
   // Services data with detailed information
   const services = [
     {
@@ -143,9 +148,11 @@ const ServicesPage = () => {
         <Box
           component="video"
           src={backgroundVideo}
-          autoPlay
+          autoPlay={!isMobile}
           muted
           loop
+          playsInline
+          poster="https://d2jy5h4r3efipz.cloudfront.net/background_video_poster.jpg"
           sx={{
             position: 'absolute',
             top: 0,

@@ -172,7 +172,7 @@ const HomePage = () => {
           component="video"
           src={backgroundVideo}
           poster={backgroundPoster}
-          autoPlay
+          autoPlay={!isMobile}
           muted
           loop
           playsInline
@@ -310,7 +310,7 @@ const HomePage = () => {
                             component="video"
                             src={item.video}
                             poster={item.poster}
-                            autoPlay
+                            autoPlay={!isMobile}
                             muted
                             loop
                             playsInline
