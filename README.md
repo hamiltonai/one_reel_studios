@@ -32,22 +32,37 @@ The contact form is configured to send emails to sales@1ReelStudios.com using Em
    - `{{message}}` - The message they've written
    - `{{to_email}}` - The destination email (sales@1ReelStudios.com)
 
-5. **Update the Configuration**:
-   - Open `/src/pages/ContactPage.js`
-   - Find the EmailJS configuration section at the top of the file
-   - Replace the placeholder values with your actual EmailJS credentials:
-     ```javascript
-     const EMAILJS_SERVICE_ID = "service_eh4zsjw"; // Your EmailJS service ID
-     const EMAILJS_TEMPLATE_ID = "template_a0gag2v"; // Your EmailJS template ID
-     const EMAILJS_PUBLIC_KEY = "sf8I2u7LCqvizaWmk"; // Your EmailJS public key
+5. **Set Up Environment Variables**:
+   
+   **For Local Development:**
+   - Create a `.env` file in the root directory (use `.env.example` as a template)
+   - Add your EmailJS credentials:
      ```
-   - To find your public key:
-     - Log in to your EmailJS account
-     - Go to "Account" > "API Keys"
-     - Copy your "Public Key"
+     REACT_APP_EMAILJS_SERVICE_ID=your_service_id_here
+     REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id_here
+     REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key_here
+     ```
+   - Replace the placeholder values with your actual EmailJS credentials
+   - Note: The `.env` file is included in `.gitignore` to prevent exposing your credentials
 
-6. **Test the Form**:
-   - Run the website locally
+   **For AWS Amplify Deployment:**
+   - Log in to the AWS Management Console
+   - Navigate to AWS Amplify and select your application
+   - Go to "Environment variables" in the left navigation menu
+   - Click "Manage variables" and then "Add variable"
+   - Add each of your EmailJS credentials:
+     - Variable: `REACT_APP_EMAILJS_SERVICE_ID` | Value: Your Service ID
+     - Variable: `REACT_APP_EMAILJS_TEMPLATE_ID` | Value: Your Template ID
+     - Variable: `REACT_APP_EMAILJS_PUBLIC_KEY` | Value: Your Public Key
+   - Save your changes and redeploy your application
+
+6. **Finding Your Credentials**:
+   - **Service ID**: Found in the "Email Services" section of your EmailJS dashboard
+   - **Template ID**: Found in the "Email Templates" section of your EmailJS dashboard
+   - **Public Key**: Go to "Account" > "API Keys" and copy your "Public Key"
+
+7. **Test the Form**:
+   - Run the website locally or visit your deployed site
    - Fill out the contact form and submit
    - Check that you receive the email at sales@1ReelStudios.com
 
@@ -73,7 +88,7 @@ npm run build
 
 ## Deployment
 
-The website is deployed to [GitHub Pages/Netlify/Vercel/etc.].
+The website is deployed to AWS Amplify. For deployment instructions, see the AWS Amplify documentation.
 
 ## Technologies Used
 

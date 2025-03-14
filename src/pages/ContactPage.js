@@ -30,10 +30,11 @@ import SendIcon from '@mui/icons-material/Send';
 // Import background video
 const backgroundVideo = "https://d2jy5h4r3efipz.cloudfront.net/background_video.mp4";
 
-// EmailJS configuration
-const EMAILJS_SERVICE_ID = "service_eh4zsjw"; // Your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = "template_a0gag2v"; // Your EmailJS template ID
-const EMAILJS_PUBLIC_KEY = "sf8I2u7LCqvizaWmk"; // Replace with your actual EmailJS public key
+// EmailJS configuration - using environment variables with fallbacks
+// This approach works with both local .env files and AWS Amplify environment variables
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || '';
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '';
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '';
 
 // Animation variants
 const fadeIn = {
@@ -153,6 +154,18 @@ const ContactPage = () => {
     
     if (validateForm()) {
       setIsSubmitting(true);
+
+      // Check if EmailJS credentials are available
+      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        console.error('EmailJS credentials are missing. Please check your environment variables.');
+        setSnackbar({
+          open: true,
+          severity: 'error',
+          message: 'Email service is not properly configured. Please contact us directly at sales@1ReelStudios.com.'
+        });
+        setIsSubmitting(false);
+        return;
+      }
 
       // Prepare template parameters
       const templateParams = {
