@@ -206,18 +206,6 @@ const HomePage = () => {
             >
               Capture Your Vision
             </Typography>
-            <Typography 
-              variant="h5" 
-              component="p" 
-              sx={{ 
-                mb: 4,
-                maxWidth: '800px',
-                mx: 'auto',
-                opacity: 0.9
-              }}
-            >
-              Professional video production and photography services to bring your creative vision to life.
-            </Typography>
             <Box sx={{ mt: 4 }}>
               <Button 
                 variant="contained" 
